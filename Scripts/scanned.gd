@@ -16,6 +16,5 @@ func add_anomaly_1_scan(pos):
 func _draw():
 	for p in scanpoints:
 		draw_circle(p, 3, Color.WHITE)
-
 	for a in anomaly_1_scanpoints:
 		draw_circle(a["pos"], 3, Color.RED)
