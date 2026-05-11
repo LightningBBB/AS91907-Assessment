@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c17ltvpymtwee"]
+
+[ext_resource type="Texture2D" uid="uid://bwumk42xjfg6r" path="res://Assets/pixil-frame-0 (2).png" id="1_ehrkp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84tig"]
+texture = ExtResource("1_ehrkp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tii4q"]
+tile_size = Vector2i(64, 64)
+sources/2 = SubResource("TileSetAtlasSource_84tig")
+
+[node name="World" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_tii4q")
