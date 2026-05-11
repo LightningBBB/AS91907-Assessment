@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dt2y436d3fyg7"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_epa76"]
-[ext_resource type="Script" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
+[ext_resource type="Script" uid="uid://7q3uh8rveinw" path="res://Scripts/player.gd" id="1_epa76"]
+[ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p81tb"]
 size = Vector2(40, 40)
@@ -26,8 +26,24 @@ offset_top = -8.0
 offset_right = 30.0
 offset_bottom = 8.0
 
-[node name="Node2D" type="Node2D" parent="Lidar Gun"]
-
-[node name="RayCast2D" type="RayCast2D" parent="Lidar Gun/Node2D"]
+[node name="Rays" type="Node2D" parent="Lidar Gun"]
 position = Vector2(25, 0)
-target_position = Vector2(1127, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="Lidar Gun/Rays"]
+position = Vector2(0, -1)
+target_position = Vector2(508, -129.4)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Lidar Gun/Rays"]
+target_position = Vector2(520.7, -65.3)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Lidar Gun/Rays"]
+target_position = Vector2(525, 0)
+
+[node name="RayCast2D4" type="RayCast2D" parent="Lidar Gun/Rays"]
+position = Vector2(3, -1)
+target_position = Vector2(520.7, 65.3)
+
+[node name="RayCast2D5" type="RayCast2D" parent="Lidar Gun/Rays"]
+target_position = Vector2(508, 129.4)
+
+[node name="Camera2D" type="Camera2D" parent="."]
