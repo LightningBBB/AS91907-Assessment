@@ -3,18 +3,16 @@ extends Node2D
 var scanpoints = []
 var anomaly_1_scanpoints = []
 
-func add_point(pos):
+func add_point(pos: Vector2) -> void:
 	scanpoints.append(pos)
 	queue_redraw()
 
-func add_anomaly_1_scan(pos):
-	anomaly_1_scanpoints.append({
-		"pos": pos
-	})
+func add_anomaly_1_scan(pos: Vector2) -> void:
+	anomaly_1_scanpoints.append(pos)
 	queue_redraw()
 
-func _draw():
+func _draw() -> void:
 	for p in scanpoints:
-		draw_circle(p, 3, Color.WHITE)
+		draw_circle(p, 1, Color.WHITE)
 	for a in anomaly_1_scanpoints:
-		draw_circle(a["pos"], 3, Color.RED)
+		draw_circle(a, 1, Color.RED)

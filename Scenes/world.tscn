@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://c17ltvpymtwee"]
+[gd_scene load_steps=10 format=4 uid="uid://c17ltvpymtwee"]
 
+[ext_resource type="Script" uid="uid://cj4tnmdf42glf" path="res://Scripts/world.gd" id="1_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bwumk42xjfg6r" path="res://Assets/pixil-frame-0 (2).png" id="1_ehrkp"]
 [ext_resource type="PackedScene" uid="uid://dt2y436d3fyg7" path="res://Scenes/player.tscn" id="2_go701"]
 [ext_resource type="Script" uid="uid://b40achyts8c15" path="res://Scripts/scanned.gd" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bc800x8ol2tk3" path="res://Scenes/anomaly_1.tscn" id="4_8j60k"]
+[ext_resource type="AudioStream" uid="uid://dpmtumgeioti3" path="res://Assets/Sound/basic_ambient.ogg" id="5_fo5ed"]
+[ext_resource type="Script" uid="uid://de0a4wmbuen0y" path="res://Scripts/ambient.gd" id="6_o06y3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02cp"]
 texture = ExtResource("1_ehrkp")
@@ -32,6 +35,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a02cp")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_5ukr8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -59,5 +63,14 @@ position = Vector2(286, 109)
 [node name="Scanned" type="Node2D" parent="."]
 script = ExtResource("3_5a7ea")
 
-[node name="Node2D" parent="." instance=ExtResource("4_8j60k")]
-position = Vector2(455, 227)
+[node name="Ambient" type="Node" parent="."]
+script = ExtResource("6_o06y3")
+
+[node name="Basic_Ambient" type="AudioStreamPlayer" parent="Ambient"]
+stream = ExtResource("5_fo5ed")
+volume_db = -17.174
+pitch_scale = 0.85
+autoplay = true
+
+[node name="Area2D" parent="." instance=ExtResource("4_8j60k")]
+position = Vector2(530, 294)
