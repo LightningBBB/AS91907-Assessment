@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cw443vj7420ul"]
+
+[node name="title_screen" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

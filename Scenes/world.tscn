@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c17ltvpymtwee"]
+[gd_scene load_steps=12 format=4 uid="uid://c17ltvpymtwee"]
 
 [ext_resource type="Script" uid="uid://cj4tnmdf42glf" path="res://Scripts/world.gd" id="1_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bwumk42xjfg6r" path="res://Assets/pixil-frame-0 (2).png" id="1_ehrkp"]
@@ -34,6 +34,11 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a02cp")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k7acu"]
+vertices = PackedVector2Array(685.9219, 222.61719, 924.2031, 349.28906, 298.32813, 389.7578, 400.14063, 36.820313, -141.89844, 23.367188, 106.609375, -164.42969, 323.15625, -128.97656)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2, 4), PackedInt32Array(3, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(104, -175, -158, 23, 295, 400, 960, 357, 691, 214, 408, 30, 330, -138)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5ukr8")
@@ -72,3 +77,6 @@ position = Vector2(530, 294)
 
 [node name="Area2D2" parent="." instance=ExtResource("8_k7acu")]
 position = Vector2(606, 164)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_k7acu")
