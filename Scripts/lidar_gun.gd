@@ -57,5 +57,8 @@ func _scan() -> void:
 			elif body.has_meta("anomaly_1"):
 				scanned.add_anomaly_1_scan(hit_pos)
 				beep.play()
+			elif body.has_meta("anomaly_2"):
+				scanned.add_anomaly_2_scan(hit_pos)
+				beep.play()
 		await get_tree().create_timer(0.05).timeout
 	scanning = false

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1nkl8o5ws8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne65n"]
+size = Vector2(50, 50)
+
+[node name="anomaly_2" type="CharacterBody2D"]
+metadata/anomaly_2 = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ne65n")
+metadata/anomaly_1 = false

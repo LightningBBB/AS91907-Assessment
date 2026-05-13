@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c17ltvpymtwee"]
+[gd_scene load_steps=11 format=4 uid="uid://c17ltvpymtwee"]
 
 [ext_resource type="Script" uid="uid://cj4tnmdf42glf" path="res://Scripts/world.gd" id="1_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bwumk42xjfg6r" path="res://Assets/pixil-frame-0 (2).png" id="1_ehrkp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bc800x8ol2tk3" path="res://Scenes/anomaly_1.tscn" id="4_8j60k"]
 [ext_resource type="AudioStream" uid="uid://dpmtumgeioti3" path="res://Assets/Sound/basic_ambient.ogg" id="5_fo5ed"]
 [ext_resource type="Script" uid="uid://de0a4wmbuen0y" path="res://Scripts/ambient.gd" id="6_o06y3"]
+[ext_resource type="PackedScene" uid="uid://o1nkl8o5ws8w" path="res://Scenes/anomaly_2.tscn" id="8_k7acu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02cp"]
 texture = ExtResource("1_ehrkp")
@@ -69,14 +70,5 @@ autoplay = true
 [node name="Area2D" parent="." instance=ExtResource("4_8j60k")]
 position = Vector2(530, 294)
 
-[node name="Area2D2" parent="." instance=ExtResource("4_8j60k")]
-position = Vector2(1128, -6)
-
-[node name="Area2D3" parent="." instance=ExtResource("4_8j60k")]
-position = Vector2(1245, -122)
-
-[node name="Area2D4" parent="." instance=ExtResource("4_8j60k")]
-position = Vector2(1783, 84)
-
-[node name="Area2D5" parent="." instance=ExtResource("4_8j60k")]
-position = Vector2(1507, 673)
+[node name="Area2D2" parent="." instance=ExtResource("8_k7acu")]
+position = Vector2(606, 164)
