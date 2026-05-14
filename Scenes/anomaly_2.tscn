@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne65n"]
 size = Vector2(50, 50)
 
-[node name="anomaly_2" type="CharacterBody2D"]
+[node name="Anomaly1" type="CharacterBody2D"]
 metadata/anomaly_2 = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

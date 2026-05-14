@@ -14,18 +14,24 @@ script = ExtResource("1_epa76")
 shape = SubResource("RectangleShape2D_p81tb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lidar Gun" type="Node2D" parent="."]
 script = ExtResource("1_xi363")
 
 [node name="ColorRect" type="ColorRect" parent="Lidar Gun"]
+visible = false
 offset_top = -8.0
 offset_right = 30.0
 offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Rays" type="Node2D" parent="Lidar Gun"]
 position = Vector2(25, 0)
@@ -37,3 +43,4 @@ volume_db = -11.45
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7, -5)
 zoom = Vector2(1.5, 1.5)
+position_smoothing_speed = 20.0

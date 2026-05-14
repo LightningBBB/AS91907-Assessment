@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne65n"]
 size = Vector2(50, 50)
 
-[node name="anomaly_1" type="CharacterBody2D"]
+[node name="Anomaly1" type="CharacterBody2D"]
 script = ExtResource("1_whh74")
 metadata/anomaly_1 = true
 

@@ -15,6 +15,11 @@ func add_anomaly_1_scan(pos: Vector2) -> void:
 	anomaly_1_scanpoints.append(pos)
 	queue_redraw()
 	
+	await get_tree().create_timer(2.0).timeout
+	
+	anomaly_1_scanpoints.erase(pos)
+	queue_redraw()
+	
 func add_anomaly_2_scan(pos: Vector2) -> void:
 	anomaly_2_scanpoints.append(pos)
 	queue_redraw()
