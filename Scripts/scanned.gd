@@ -6,12 +6,13 @@ var anomaly_2_scanpoints = []
 var anomaly_3_scanpoints = []
 var anomaly_4_scanpoints = []
 var anomaly_5_scanpoints = []
+var lorebook_scanpoints = []
 
 func add_point(pos: Vector2) -> void:
 	scanpoints.append(pos)
 	queue_redraw()
 
-func add_anomaly_1_scan(pos: Vector2) -> void:
+func add_anomaly_1_scanpoint(pos: Vector2) -> void:
 	anomaly_1_scanpoints.append(pos)
 	queue_redraw()
 	
@@ -20,8 +21,12 @@ func add_anomaly_1_scan(pos: Vector2) -> void:
 	anomaly_1_scanpoints.erase(pos)
 	queue_redraw()
 	
-func add_anomaly_2_scan(pos: Vector2) -> void:
+func add_anomaly_2_scanpoint(pos: Vector2) -> void:
 	anomaly_2_scanpoints.append(pos)
+	queue_redraw()
+
+func add_lorebook_scanpoint(pos: Vector2) -> void:
+	lorebook_scanpoints.append(pos)
 	queue_redraw()
 
 func _draw() -> void:
@@ -38,3 +43,6 @@ func _draw() -> void:
 		draw_circle(point_ano4, 1, Color.RED)
 	for point_ano5 in anomaly_5_scanpoints:
 		draw_circle(point_ano5, 1, Color.RED)
+		
+	for point_lorebook in lorebook_scanpoints:
+		draw_circle(point_lorebook, 1, Color.GREEN)

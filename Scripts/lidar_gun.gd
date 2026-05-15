@@ -90,10 +90,13 @@ func _scan() -> void:
 				scanned.add_point(hit_pos)
 				beep.play()
 			elif body.has_meta("anomaly_1"):
-				scanned.add_anomaly_1_scan(hit_pos)
+				scanned.add_anomaly_1_scanpoint(hit_pos)
 				beep.play()
 			elif body.has_meta("anomaly_2"):
-				scanned.add_anomaly_2_scan(hit_pos)
+				scanned.add_anomaly_2_scanpoint(hit_pos)
+				beep.play()
+			elif body.has_meta("lorebook"):
+				scanned.add_lorebook_scanpoint(hit_pos)
 				beep.play()
 
 		await get_tree().create_timer(0.05).timeout
