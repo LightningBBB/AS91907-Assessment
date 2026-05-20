@@ -8,26 +8,28 @@ var anomaly_4_scanpoints = []
 var anomaly_5_scanpoints = []
 var lorebook_scanpoints = []
 
-func add_point(pos: Vector2) -> void:
-	scanpoints.append(pos)
-	queue_redraw()
+func add_point(collision_point: Vector2, tile) -> void:
+	if tile == "wall":
+		scanpoints.append(collision_point)
+		queue_redraw()
+		
+	if tile == "anomaly_1":
+		anomaly_1_scanpoints.append(collision_point)
+		queue_redraw()
+		
+		await get_tree().create_timer(2.0).timeout
+		
+		anomaly_1_scanpoints.erase(collision_point)
+		queue_redraw()
+		
+	if tile == "anomaly_2":
+		anomaly_2_scanpoints.append(collision_point)
+		queue_redraw()
+	
+	if tile == "lorebook":
+		lorebook_scanpoints.append(collision_point)
+		queue_redraw()
 
-func add_anomaly_1_scanpoint(pos: Vector2) -> void:
-	anomaly_1_scanpoints.append(pos)
-	queue_redraw()
-	
-	await get_tree().create_timer(2.0).timeout
-	
-	anomaly_1_scanpoints.erase(pos)
-	queue_redraw()
-	
-func add_anomaly_2_scanpoint(pos: Vector2) -> void:
-	anomaly_2_scanpoints.append(pos)
-	queue_redraw()
-
-func add_lorebook_scanpoint(pos: Vector2) -> void:
-	lorebook_scanpoints.append(pos)
-	queue_redraw()
 
 func _draw() -> void:
 	for point in scanpoints:

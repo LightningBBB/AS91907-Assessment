@@ -77,28 +77,19 @@ func _scan() -> void:
 		var shuffled = rays.duplicate()
 		shuffled.shuffle()
 
-		for ray in shuffled.slice(0, 2):
+		for ray in shuffled.slice(  0, 2):
 			ray.force_raycast_update()
 
 			if not ray.is_colliding():
 				continue
 
-			var body = ray.get_collider()
-			var hit_pos = ray.get_collision_point()
+			var collider = ray.get_collider()
+			var collision_point = ray.get_collision_point()
+			var tile_data = collider.get_cell_tile_data(collision_point)
 
-			if body.has_meta("wall"):
-				scanned.add_point(hit_pos)
-				beep.play()
-			elif body.has_meta("anomaly_1"):
-				scanned.add_anomaly_1_scanpoint(hit_pos)
-				beep.play()
-			elif body.has_meta("anomaly_2"):
-				scanned.add_anomaly_2_scanpoint(hit_pos)
-				beep.play()
-			elif body.has_meta("lorebook"):
-				scanned.add_lorebook_scanpoint(hit_pos)
-				beep.play()
-
+			var tile_type = tile_data.get_custom_data("type")
+			scanned.add_point(collision_point, tile_type)
+			# wall anoamly_1 anoamly_2 anoamly_3 lore
 		await get_tree().create_timer(0.05).timeout
 
 	scanning = false
