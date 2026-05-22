@@ -82,14 +82,24 @@ func _scan() -> void:
 
 			if not ray.is_colliding():
 				continue
-
+			
 			var collider = ray.get_collider()
 			var collision_point = ray.get_collision_point()
-			var tile_data = collider.get_cell_tile_data(collision_point)
-
-			var tile_type = tile_data.get_custom_data("type")
+			var tile_type = null
+			if collider is TileMapLayer:
+				var local_pos = collider.to_local(collision_point)
+				var cell = collider.local_to_map(local_pos)
+				
+				var tile_data = collider.get_cell_tile_data(cell)
+				print(tile_data)
+				tile_type = str(tile_data.get_custom_data("type"))
+				
+			elif collider is CharacterBody2D:
+				pass
+			
 			scanned.add_point(collision_point, tile_type)
-			# wall anoamly_1 anoamly_2 anoamly_3 lore
+			beep.play()
+			# wall anoamly_1 anoamly_2 anoamly_3 lore_book
 		await get_tree().create_timer(0.05).timeout
 
 	scanning = false

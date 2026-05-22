@@ -8,12 +8,12 @@ var anomaly_4_scanpoints = []
 var anomaly_5_scanpoints = []
 var lorebook_scanpoints = []
 
-func add_point(collision_point: Vector2, tile) -> void:
-	if tile == "wall":
+func add_point(collision_point: Vector2, tile_type) -> void:
+	if tile_type == "wall":
 		scanpoints.append(collision_point)
 		queue_redraw()
 		
-	if tile == "anomaly_1":
+	if tile_type == "anomaly_1":
 		anomaly_1_scanpoints.append(collision_point)
 		queue_redraw()
 		
@@ -22,11 +22,11 @@ func add_point(collision_point: Vector2, tile) -> void:
 		anomaly_1_scanpoints.erase(collision_point)
 		queue_redraw()
 		
-	if tile == "anomaly_2":
+	if tile_type == "anomaly_2":
 		anomaly_2_scanpoints.append(collision_point)
 		queue_redraw()
 	
-	if tile == "lorebook":
+	if tile_type == "lorebook":
 		lorebook_scanpoints.append(collision_point)
 		queue_redraw()
 
