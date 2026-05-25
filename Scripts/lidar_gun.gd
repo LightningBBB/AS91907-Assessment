@@ -84,12 +84,19 @@ func _scan() -> void:
 				continue
 			
 			var collider = ray.get_collider()
-			var collision_point = ray.get_collision_point()
+			var ray_direction = ray.target_position.normalized()
+			if ray_direction.x > 0:
+				var collision_point = ray.get_collision_point() - ray_direction * 1.1
+			else:
+				var collision_point = ray.get_collision_point() + ray_direction * 1.1
+			
+			
 			var tile_type = null
 			if collider is TileMapLayer:
 				var local_pos = collider.to_local(collision_point)
+				print(local_pos)
 				var cell = collider.local_to_map(local_pos)
-				
+				print(cell)
 				var tile_data = collider.get_cell_tile_data(cell)
 				print(tile_data)
 				tile_type = str(tile_data.get_custom_data("type"))

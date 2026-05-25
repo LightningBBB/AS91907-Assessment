@@ -26,7 +26,7 @@ func add_point(collision_point: Vector2, tile_type) -> void:
 		anomaly_2_scanpoints.append(collision_point)
 		queue_redraw()
 	
-	if tile_type == "lorebook":
+	if tile_type == "lore_book":
 		lorebook_scanpoints.append(collision_point)
 		queue_redraw()
 
