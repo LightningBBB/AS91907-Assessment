@@ -77,34 +77,27 @@ func _scan() -> void:
 		var shuffled = rays.duplicate()
 		shuffled.shuffle()
 
-		for ray in shuffled.slice(  0, 2):
+		for ray in shuffled.slice(0,2):
 			ray.force_raycast_update()
 
 			if not ray.is_colliding():
 				continue
 			
 			var collider = ray.get_collider()
-			var ray_direction = ray.target_position.normalized()
-			if ray_direction.x > 0:
-				var collision_point = ray.get_collision_point() - ray_direction * 1.1
-			else:
-				var collision_point = ray.get_collision_point() + ray_direction * 1.1
-			
+			var collision_normal = ray.get_collision_normal()
+			var collision_point = ray.get_collision_point() - collision_normal * 1.1
 			
 			var tile_type = null
 			if collider is TileMapLayer:
 				var local_pos = collider.to_local(collision_point)
-				print(local_pos)
 				var cell = collider.local_to_map(local_pos)
-				print(cell)
 				var tile_data = collider.get_cell_tile_data(cell)
-				print(tile_data)
 				tile_type = str(tile_data.get_custom_data("type"))
+				scanned.add_point(collision_point, tile_type)
 				
 			elif collider is CharacterBody2D:
-				pass
-			
-			scanned.add_point(collision_point, tile_type)
+				
+				
 			beep.play()
 			# wall anoamly_1 anoamly_2 anoamly_3 lore_book
 		await get_tree().create_timer(0.05).timeout
