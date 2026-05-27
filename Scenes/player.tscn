@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt2y436d3fyg7"]
+[gd_scene format=3 uid="uid://dt2y436d3fyg7"]
 
 [ext_resource type="Script" uid="uid://7q3uh8rveinw" path="res://Scripts/player.gd" id="1_epa76"]
 [ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
@@ -7,13 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p81tb"]
 size = Vector2(40, 40)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=802388494]
 script = ExtResource("1_epa76")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=640255718]
 shape = SubResource("RectangleShape2D_p81tb")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=367449291]
 visible = false
 offset_left = -20.0
 offset_top = -20.0
@@ -22,10 +22,10 @@ offset_bottom = 20.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Lidar Gun" type="Node2D" parent="."]
+[node name="Lidar Gun" type="Node2D" parent="." unique_id=971271743]
 script = ExtResource("1_xi363")
 
-[node name="ColorRect" type="ColorRect" parent="Lidar Gun"]
+[node name="ColorRect" type="ColorRect" parent="Lidar Gun" unique_id=1816479817]
 visible = false
 offset_top = -8.0
 offset_right = 30.0
@@ -33,14 +33,14 @@ offset_bottom = 8.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Rays" type="Node2D" parent="Lidar Gun"]
+[node name="Rays" type="Node2D" parent="Lidar Gun" unique_id=623796355]
 position = Vector2(25, 0)
 
-[node name="beep" type="AudioStreamPlayer" parent="Lidar Gun"]
+[node name="beep" type="AudioStreamPlayer" parent="Lidar Gun" unique_id=457728639]
 stream = ExtResource("3_6t5aa")
 volume_db = -11.45
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=368230299]
 position = Vector2(7, -5)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 20.0

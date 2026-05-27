@@ -96,10 +96,9 @@ func _scan() -> void:
 				scanned.add_point(collision_point, tile_type)
 				
 			elif collider is CharacterBody2D:
-				
+				scanned.add_point(collision_point, collider.get_meta("creature"))
 				
 			beep.play()
-			# wall anoamly_1 anoamly_2 anoamly_3 lore_book
 		await get_tree().create_timer(0.05).timeout
 
 	scanning = false
