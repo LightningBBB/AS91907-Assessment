@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var agent = $NavigationAgent2D
 @onready var timer = $Timer
-@onready var region = $"../AnomalySpawn"
 
 var speed = 10
 
