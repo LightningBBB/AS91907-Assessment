@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 @onready var agent = $NavigationAgent2D
 @onready var timer = $Timer
+@onready var region = get_parent().get_node("../NavigationRegion2D")
 
 var speed = 10
 
 func _ready() -> void:
+	$ColorRect.hide()
 	timer.timeout.connect(pick_new_target)
 	pick_new_target()
 
@@ -26,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func pick_new_target():
-	timer.stop() # IMPORTANT
+	timer.stop()
 	
 	var random_point = NavigationServer2D.region_get_random_point(
 		region.get_rid(),

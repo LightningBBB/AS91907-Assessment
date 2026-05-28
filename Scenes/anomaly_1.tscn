@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://b34bb00e345nu" path="res://Scripts/anomaly_1.gd" id="1_whh74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne65n"]
-size = Vector2(50, 50)
+size = Vector2(42, 42)
 
 [node name="Anomaly1" type="CharacterBody2D" unique_id=1570329183]
 script = ExtResource("1_whh74")
+anomaly_1 = null
 metadata/creature = "anomaly_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1229001096]
@@ -20,7 +21,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1603123102]
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
