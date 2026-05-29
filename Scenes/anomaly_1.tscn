@@ -6,8 +6,8 @@
 size = Vector2(42, 42)
 
 [node name="Anomaly1" type="CharacterBody2D" unique_id=1570329183]
+collision_layer = 3
 script = ExtResource("1_whh74")
-anomaly_1 = null
 metadata/creature = "anomaly_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1229001096]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dk4rfbxecxjtk"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1342891929]
+
+[node name="Control" type="Control" parent="." unique_id=924902391]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=879746979]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=102767137]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0

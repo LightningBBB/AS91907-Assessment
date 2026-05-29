@@ -5,6 +5,8 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 const SHIFT_SPEED = -100
 
+@onready var interaction_area = $Area2D 
+
 @export var flicker_speed = 20
 @export var point_size = 1
 @export var body_size = 20
@@ -17,7 +19,7 @@ var points_body = []
 func _ready() -> void:
 	randomize()
 	
-	for i in max_points:
+	for i in range(max_points):
 		points_body.append({
 			"position": Vector2(
 				randf_range(-body_size, body_size),
@@ -49,6 +51,12 @@ func _physics_process(delta: float) -> void:
 		
 	queue_redraw()
 	
+	var touching_bodies = interaction_area.get_overlapping_bodies()
+	for body in touching_bodies:
+		if body.get_meta("creature") == "anomaly_1":
+			if Global.fuel > 0:
+				Global.fuel -= 1	
+			
 func _draw():
 	for p in points_body:
 		if p["visible"] == true:

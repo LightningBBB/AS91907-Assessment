@@ -4,11 +4,21 @@
 [ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
 [ext_resource type="AudioStream" uid="uid://c3nbr604uckg0" path="res://Assets/Sound/beep.wav" id="3_6t5aa"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
+size = Vector2(42, 42)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p81tb"]
 size = Vector2(40, 40)
 
 [node name="Player" type="CharacterBody2D" unique_id=802388494]
 script = ExtResource("1_epa76")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1237887961]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1453312059]
+shape = SubResource("RectangleShape2D_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=640255718]
 shape = SubResource("RectangleShape2D_p81tb")

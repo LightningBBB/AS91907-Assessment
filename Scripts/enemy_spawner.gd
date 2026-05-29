@@ -25,10 +25,12 @@ func get_spawn_tiles() -> void:
 		
 		var can_spawn = tile_data.get_custom_data("anomaly_1_spawn")
 		
-		if can_spawn:
+		if can_spawn == true:
 			var pos = tilemap.map_to_local(cell)
 			pos += Vector2(tilemap.tile_set.tile_size) / 2.0
-			spawn_tiles.append(pos)
+			spawn_tiles.append(tilemap.to_global(pos))
+		elif can_spawn == false:
+			continue
 
 func spawn() -> void:
 	for i in anomaly_1_spawns:

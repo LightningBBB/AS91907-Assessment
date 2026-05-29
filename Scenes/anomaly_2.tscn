@@ -1,11 +1,24 @@
 [gd_scene format=3 uid="uid://o1nkl8o5ws8w"]
 
+[ext_resource type="Script" uid="uid://3g5iienrcu4" path="res://Scripts/anomaly_2.gd" id="1_ndnni"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne65n"]
-size = Vector2(50, 50)
+size = Vector2(42, 42)
 
 [node name="Anomaly2" type="CharacterBody2D" unique_id=2113967926]
+script = ExtResource("1_ndnni")
 metadata/creature = "anomaly_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069986960]
 shape = SubResource("RectangleShape2D_ne65n")
 metadata/anomaly_1 = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2001683102]
+
+[node name="Timer" type="Timer" parent="." unique_id=358359903]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1896890388]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
