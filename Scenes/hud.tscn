@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://dk4rfbxecxjtk"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1342891929]
+[ext_resource type="Script" uid="uid://cc0ecxutd0l3a" path="res://Scripts/hud.gd" id="1_e0onf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0onf"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=1342891929]
+script = ExtResource("1_e0onf")
 
 [node name="Control" type="Control" parent="." unique_id=924902391]
 layout_mode = 3
@@ -15,5 +24,10 @@ offset_bottom = 23.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=102767137]
 layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 1276.0
+offset_bottom = 12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e0onf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fccik")
+show_percentage = false
