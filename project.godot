@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="AS91907-Assessment"
-run/main_scene="uid://c17ltvpymtwee"
+run/main_scene="uid://cw443vj7420ul"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -41,7 +41,8 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Assets/": "red",
 "res://Scenes/": "orange",
-"res://Scripts/": "yellow"
+"res://Scripts/": "yellow",
+"res://Themes/": "green"
 }
 
 [input]

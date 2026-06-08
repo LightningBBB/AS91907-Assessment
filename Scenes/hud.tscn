@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dk4rfbxecxjtk"]
 
 [ext_resource type="Script" uid="uid://cc0ecxutd0l3a" path="res://Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="Theme" uid="uid://bd35u6ur63nwe" path="res://Themes/ui.tres" id="2_fccik"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0onf"]
 bg_color = Color(0, 0, 0, 0)
@@ -8,26 +9,85 @@ bg_color = Color(0, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjfho"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Hud" type="CanvasLayer" unique_id=1342891929]
 script = ExtResource("1_e0onf")
 
 [node name="Control" type="Control" parent="." unique_id=924902391]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme = ExtResource("2_fccik")
 
-[node name="Label" type="Label" parent="Control" unique_id=879746979]
+[node name="Controls" type="HBoxContainer" parent="Control" unique_id=2122942411]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 12.0
+offset_top = 680.0
+offset_right = 205.0
+offset_bottom = 720.0
+theme = ExtResource("2_fccik")
+theme_override_constants/separation = 40
+
+[node name="Scan" type="Label" parent="Control/Controls" unique_id=879746979]
+layout_mode = 2
+theme_type_variation = &"text_small"
+text = "[LMB] Scan"
+
+[node name="Move" type="Label" parent="Control/Controls" unique_id=952803138]
+layout_mode = 2
+theme_type_variation = &"text_small"
+text = "[WASD] Move"
+
+[node name="Sneak" type="Label" parent="Control/Controls" unique_id=378377038]
+layout_mode = 2
+theme_type_variation = &"text_small"
+text = "[LSHIFT] Sneak"
 
 [node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=102767137]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 10.0
+offset_top = 4.0
 offset_right = 1276.0
-offset_bottom = 12.0
+offset_bottom = 6.0
 theme_override_styles/background = SubResource("StyleBoxFlat_e0onf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fccik")
+value = 100.0
 show_percentage = false
+
+[node name="PrototypeGoal" type="Label" parent="Control" unique_id=209718245]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -14.0
+offset_right = 91.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"text_medium"
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjfho")
+text = "find the green box."
+horizontal_alignment = 1
+
+[node name="Death" type="Label" parent="Control" unique_id=1295730582]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = -51.5
+offset_right = 203.5
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"text_large"
+text = "Game Over"

@@ -1,7 +1,72 @@
 [gd_scene format=3 uid="uid://cw443vj7420ul"]
 
-[node name="TitleScreen" type="CanvasLayer"]
+[ext_resource type="Theme" uid="uid://bd35u6ur63nwe" path="res://Themes/ui.tres" id="1_klylv"]
+[ext_resource type="Script" uid="uid://wi72i02udmls" path="res://Scripts/title_screen.gd" id="2_p3fck"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TitleScreen" type="Control" unique_id=1204544990]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_klylv")
+script = ExtResource("2_p3fck")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1713446921]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="TitleContainer" type="VBoxContainer" parent="." unique_id=1106978476]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01875
+anchor_top = 0.030555556
+anchor_right = 0.31875
+anchor_bottom = 0.3236111
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="TitleContainer" unique_id=1018224166]
+layout_mode = 2
+theme_type_variation = &"text_large"
+text = "LOC//336B"
+
+[node name="Continue" type="Button" parent="TitleContainer" unique_id=1502025382]
+layout_mode = 2
+theme_type_variation = &"button_medium"
+text = "Continue"
+alignment = 0
+
+[node name="StartNew" type="Button" parent="TitleContainer" unique_id=1919187052]
+layout_mode = 2
+theme_type_variation = &"button_medium"
+text = "Start New"
+alignment = 0
+
+[node name="Settings" type="Button" parent="TitleContainer" unique_id=606818760]
+layout_mode = 2
+theme_type_variation = &"button_medium"
+text = "Settings"
+alignment = 0
+
+[node name="Quit" type="Button" parent="TitleContainer" unique_id=1744082346]
+layout_mode = 2
+theme_type_variation = &"button_medium"
+text = "Quit"
+alignment = 0
+
+[node name="Version" type="Label" parent="." unique_id=516022731]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015625
+anchor_top = 0.94861114
+anchor_right = 0.0703125
+anchor_bottom = 0.98055553
+grow_vertical = 0
+theme_type_variation = &"text_small"
+text = "v1.0.1 // Prototype"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="TitleContainer/Continue" to="." method="_on_continue_pressed"]

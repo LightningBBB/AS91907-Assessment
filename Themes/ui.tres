@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://bd35u6ur63nwe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr8gy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+button_large/base_type = &"Button"
+button_medium/base_type = &"Button"
+button_medium/styles/normal = SubResource("StyleBoxFlat_hr8gy")
+button_small/base_type = &"Button"
+text_large/base_type = &"Label"
+text_large/colors/font_color = Color(1, 1, 1, 1)
+text_large/font_sizes/font_size = 75
+text_medium/base_type = &"Label"
+text_medium/font_sizes/font_size = 35
+text_small/base_type = &"Label"
+text_small/font_sizes/font_size = 20
