@@ -1,11 +1,19 @@
 [gd_resource type="Theme" format=3 uid="uid://bd35u6ur63nwe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpnmc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbn56"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr8gy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
 button_large/base_type = &"Button"
 button_medium/base_type = &"Button"
+button_medium/styles/focus = SubResource("StyleBoxFlat_bpnmc")
+button_medium/styles/hover = SubResource("StyleBoxFlat_dbn56")
 button_medium/styles/normal = SubResource("StyleBoxFlat_hr8gy")
 button_small/base_type = &"Button"
 text_large/base_type = &"Label"

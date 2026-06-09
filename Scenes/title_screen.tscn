@@ -3,6 +3,13 @@
 [ext_resource type="Theme" uid="uid://bd35u6ur63nwe" path="res://Themes/ui.tres" id="1_klylv"]
 [ext_resource type="Script" uid="uid://wi72i02udmls" path="res://Scripts/title_screen.gd" id="2_p3fck"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [node name="TitleScreen" type="Control" unique_id=1204544990]
 layout_mode = 3
 anchors_preset = 15
@@ -19,13 +26,21 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
+[node name="Panel" type="Panel" parent="." unique_id=1844704110]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 701.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
+
 [node name="TitleContainer" type="VBoxContainer" parent="." unique_id=1106978476]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.01875
-anchor_top = 0.030555556
-anchor_right = 0.31875
-anchor_bottom = 0.3236111
+anchor_left = 0.03203125
+anchor_top = 0.055555556
+anchor_right = 0.33203125
+anchor_bottom = 0.34861112
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="TitleContainer" unique_id=1018224166]
@@ -33,7 +48,7 @@ layout_mode = 2
 theme_type_variation = &"text_large"
 text = "LOC//36B"
 
-[node name="Story" type="Button" parent="TitleContainer" unique_id=1502025382]
+[node name="Expedition" type="Button" parent="TitleContainer" unique_id=1502025382]
 layout_mode = 2
 theme_type_variation = &"button_medium"
 text = "Expedition"
@@ -60,13 +75,14 @@ alignment = 0
 [node name="Version" type="Label" parent="." unique_id=516022731]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.015625
-anchor_top = 0.94861114
-anchor_right = 0.0703125
-anchor_bottom = 0.98055553
+anchor_left = 0.0265625
+anchor_top = 0.92638886
+anchor_right = 0.18671875
+anchor_bottom = 0.9652778
 grow_vertical = 0
 theme_type_variation = &"text_small"
 text = "v1.1.0 // Vertical Slice"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="TitleContainer/Story" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="TitleContainer/Expedition" to="." method="_on_expedition_pressed"]
+[connection signal="pressed" from="TitleContainer/Endless" to="." method="_on_endless_pressed"]
