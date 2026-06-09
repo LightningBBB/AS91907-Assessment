@@ -31,18 +31,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Title" type="Label" parent="TitleContainer" unique_id=1018224166]
 layout_mode = 2
 theme_type_variation = &"text_large"
-text = "LOC//336B"
+text = "LOC//36B"
 
-[node name="Continue" type="Button" parent="TitleContainer" unique_id=1502025382]
+[node name="Story" type="Button" parent="TitleContainer" unique_id=1502025382]
 layout_mode = 2
 theme_type_variation = &"button_medium"
-text = "Continue"
+text = "Expedition"
 alignment = 0
 
-[node name="StartNew" type="Button" parent="TitleContainer" unique_id=1919187052]
+[node name="Endless" type="Button" parent="TitleContainer" unique_id=1919187052]
 layout_mode = 2
 theme_type_variation = &"button_medium"
-text = "Start New"
+text = "Endless"
 alignment = 0
 
 [node name="Settings" type="Button" parent="TitleContainer" unique_id=606818760]
@@ -66,7 +66,7 @@ anchor_right = 0.0703125
 anchor_bottom = 0.98055553
 grow_vertical = 0
 theme_type_variation = &"text_small"
-text = "v1.0.1 // Prototype"
+text = "v1.1.0 // Vertical Slice"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="TitleContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="TitleContainer/Story" to="." method="_on_continue_pressed"]
