@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7q3uh8rveinw" path="res://Scripts/player.gd" id="1_epa76"]
 [ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
 [ext_resource type="AudioStream" uid="uid://c3nbr604uckg0" path="res://Assets/Sound/beep.wav" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://dk4rfbxecxjtk" path="res://Scenes/hud.tscn" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
 size = Vector2(42, 42)
@@ -54,3 +55,5 @@ volume_db = -11.45
 position = Vector2(7, -5)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 20.0
+
+[node name="Hud" parent="." unique_id=1342891929 instance=ExtResource("4_vgqql")]

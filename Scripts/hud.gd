@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var prototype_goal = $Control/PrototypeGoal
 @onready var death_label = $Control/Death
 
+@export var inv: Inv
+
 func _process(_delta):
 	fuel_bar.value = Global.fuel
 	if Global.fuel == 0:
@@ -13,3 +15,6 @@ func _ready() -> void:
 	await get_tree().create_timer(3.0).timeout
 	
 	prototype_goal.hide() 
+
+func collect(item):
+	inv.insert(item)

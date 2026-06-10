@@ -74,32 +74,34 @@ func _scan() -> void:
 	scanning = true
 
 	for i in rays_per_scan:
-		var shuffled = rays.duplicate()
-		shuffled.shuffle()
+		if Global.fuel > 0:
+			var shuffled = rays.duplicate()
+			shuffled.shuffle()
 
-		for ray in shuffled.slice(0,2):
-			ray.force_raycast_update()
+			for ray in shuffled.slice(0,2):
+				ray.force_raycast_update()
 
-			if not ray.is_colliding():
-				continue
-			
-			var collider = ray.get_collider()
-			var collision_normal = ray.get_collision_normal()
-			var collision_point = ray.get_collision_point() - collision_normal * 1.1
-			
-			var tile_type = null
-			if collider is TileMapLayer:
-				var local_pos = collider.to_local(collision_point)
-				var cell = collider.local_to_map(local_pos)
-				var tile_data = collider.get_cell_tile_data(cell)
-				tile_type = str(tile_data.get_custom_data("type"))
-				scanned.add_point(collision_point, tile_type)
+				if not ray.is_colliding():
+					continue
 				
-			elif collider is CharacterBody2D:
-				scanned.add_point(collision_point, collider.get_meta("creature"))
+				var collider = ray.get_collider()
+				var collision_normal = ray.get_collision_normal()
+				var collision_point = ray.get_collision_point() - collision_normal * 1.1
 				
-			beep.play()
-		await get_tree().create_timer(0.05).timeout
+				var tile_type = null
+				if collider is TileMapLayer:
+					var local_pos = collider.to_local(collision_point)
+					var cell = collider.local_to_map(local_pos)
+					var tile_data = collider.get_cell_tile_data(cell)
+					tile_type = str(tile_data.get_custom_data("type"))
+					scanned.add_point(collision_point, tile_type)
+					
+				elif collider is CharacterBody2D:
+					scanned.add_point(collision_point, collider.get_meta("creature"))
+					
+				beep.play()
+			await get_tree().create_timer(0.05).timeout
+			Global.fuel -= 0.25
 
 	scanning = false
 
