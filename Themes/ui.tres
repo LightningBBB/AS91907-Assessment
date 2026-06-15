@@ -9,6 +9,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr8gy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhwyg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [resource]
 button_large/base_type = &"Button"
 button_medium/base_type = &"Button"
@@ -16,6 +23,8 @@ button_medium/styles/focus = SubResource("StyleBoxFlat_bpnmc")
 button_medium/styles/hover = SubResource("StyleBoxFlat_dbn56")
 button_medium/styles/normal = SubResource("StyleBoxFlat_hr8gy")
 button_small/base_type = &"Button"
+hud_panel/base_type = &"Panel"
+hud_panel/styles/panel = SubResource("StyleBoxFlat_vhwyg")
 text_large/base_type = &"Label"
 text_large/colors/font_color = Color(1, 1, 1, 1)
 text_large/font_sizes/font_size = 75

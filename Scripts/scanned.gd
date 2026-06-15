@@ -7,6 +7,8 @@ var anomaly_3_scanpoints = []
 var anomaly_4_scanpoints = []
 var anomaly_5_scanpoints = []
 var lorebook_scanpoints = []
+var structure_scanpoints = []
+var credit_scanpoints = []
 
 func add_point(collision_point: Vector2, collider) -> void:
 	if collider == "wall":
@@ -15,6 +17,10 @@ func add_point(collision_point: Vector2, collider) -> void:
 	
 	elif collider == "lore_book":
 		lorebook_scanpoints.append(collision_point)
+		queue_redraw()
+		
+	elif collider == "credit":
+		credit_scanpoints.append(collision_point)
 		queue_redraw()
 		
 	elif collider == "anomaly_1":
@@ -28,6 +34,10 @@ func add_point(collision_point: Vector2, collider) -> void:
 		
 	elif collider == "anomaly_2":
 		anomaly_2_scanpoints.append(collision_point)
+		queue_redraw()
+		
+	elif collider == "structure":
+		structure_scanpoints.append(collision_point)
 		queue_redraw()
 
 
@@ -48,3 +58,9 @@ func _draw() -> void:
 		
 	for point_lorebook in lorebook_scanpoints:
 		draw_circle(point_lorebook, 1, Color.GREEN)
+		
+	for point_credit in credit_scanpoints:
+		draw_circle(point_credit, 1, Color.GOLD)
+		
+	for point_structure in structure_scanpoints:
+		draw_circle(point_structure, 1, Color.BLUE)

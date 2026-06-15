@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var timer = $Timer
 @onready var region = get_parent().get_node("../NavigationRegion2D")
 
-var speed = 10
+var speed = 20
 
 func _ready() -> void:
 	$ColorRect.hide()

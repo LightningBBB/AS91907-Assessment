@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c475seq8khocw"]
+
+[ext_resource type="Script" uid="uid://cjoy2woocuala" path="res://Scripts/cursor.gd" id="1_8pp82"]
+
+[node name="Cursor" type="Node2D" unique_id=449404892]
+script = ExtResource("1_8pp82")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583774191]
+position = Vector2(5.684342e-14, 2.3841858e-07)
+scale = Vector2(0.35351563, 0.35351563)

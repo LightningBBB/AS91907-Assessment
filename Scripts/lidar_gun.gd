@@ -98,10 +98,17 @@ func _scan() -> void:
 					
 				elif collider is CharacterBody2D:
 					scanned.add_point(collision_point, collider.get_meta("creature"))
+				
+				elif collider is Area2D:
+					scanned.add_point(collision_point, collider.get_meta("structure"))
 					
 				beep.play()
+				
 			await get_tree().create_timer(0.05).timeout
-			Global.fuel -= 0.25
+			if Global.fuelbonus > 0:
+				Global.fuelbonus -= 0.25
+			else:
+				Global.fuel -= 0.25
 
 	scanning = false
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bd35u6ur63nwe" path="res://Themes/ui.tres" id="1_klylv"]
 [ext_resource type="Script" uid="uid://wi72i02udmls" path="res://Scripts/title_screen.gd" id="2_p3fck"]
+[ext_resource type="PackedScene" uid="uid://c475seq8khocw" path="res://Scenes/cursor.tscn" id="3_4gxqj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -83,6 +84,8 @@ grow_vertical = 0
 theme_type_variation = &"text_small"
 text = "v1.1.0 // Vertical Slice"
 metadata/_edit_use_anchors_ = true
+
+[node name="Cursor" parent="." unique_id=449404892 instance=ExtResource("3_4gxqj")]
 
 [connection signal="pressed" from="TitleContainer/Expedition" to="." method="_on_expedition_pressed"]
 [connection signal="pressed" from="TitleContainer/Endless" to="." method="_on_endless_pressed"]

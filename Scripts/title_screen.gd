@@ -15,6 +15,7 @@ var focused := -1
 var typing := true
 
 func _ready() -> void:
+	Global.cursor = "pointer"
 	for btn in buttons:
 		btn.text = ""
 		btn.focus_mode = Control.FOCUS_ALL

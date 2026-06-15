@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bhdxhqrk483c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nb4k"]
+size = Vector2(10, 10)
+
+[node name="ExpeditionShip" type="Node2D" unique_id=1068476576]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=172793039]
+metadata/structure = "expedition_ship"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=642254594]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_5nb4k")
