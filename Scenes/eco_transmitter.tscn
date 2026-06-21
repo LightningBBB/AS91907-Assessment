@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cs47qu7xgfjei"]
+
+[ext_resource type="Script" uid="uid://c3iu6kahca4ip" path="res://Scripts/eco_transmitter.gd" id="1_60lih"]
+
+[node name="EcoTransmitter" type="StaticBody2D" unique_id=1159630745 groups=["structure"]]
+script = ExtResource("1_60lih")
+metadata/type = "eco_transmitter"
+
+[node name="Rays" type="Node2D" parent="." unique_id=1738451631]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=770032155]
+polygon = PackedVector2Array(-24, 16, -16, 8, -16, -8, -24, -16, -16, -24, -8, -16, 8, -16, 16, -24, 24, -16, 16, -8, 16, 8, 24, 16, 16, 24, 8, 16, -8, 16, -16, 24)

@@ -45,15 +45,16 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Rays" type="Node2D" parent="Lidar Gun" unique_id=623796355]
-position = Vector2(25, 0)
+position = Vector2(13, 0)
 
 [node name="beep" type="AudioStreamPlayer" parent="Lidar Gun" unique_id=457728639]
 stream = ExtResource("3_6t5aa")
 volume_db = -11.45
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=368230299]
-position = Vector2(7, -5)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 20.0
 
 [node name="Hud" parent="." unique_id=1342891929 instance=ExtResource("4_vgqql")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

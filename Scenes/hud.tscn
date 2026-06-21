@@ -79,7 +79,7 @@ layout_mode = 2
 theme_type_variation = &"text_small"
 text = "[LSHIFT] Sneak"
 
-[node name="PrototypeGoal" type="Label" parent="Control" unique_id=209718245]
+[node name="Objective" type="Label" parent="Control" unique_id=209718245]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,3 +154,33 @@ theme_override_styles/background = SubResource("StyleBoxFlat_e0onf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_t1xeu")
 value = 100.0
 show_percentage = false
+
+[node name="Location" type="Label" parent="Control" unique_id=1137401612]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = 10.0
+offset_right = 99.5
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_type_variation = &"text_small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjfho")
+text = "nowhere"
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="Control" unique_id=180292209]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 551.0
+offset_top = 420.0
+offset_right = 629.0
+offset_bottom = 451.0
+grow_horizontal = 2
+theme_type_variation = &"text_small"
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjfho")
+text = "0"
+horizontal_alignment = 1
