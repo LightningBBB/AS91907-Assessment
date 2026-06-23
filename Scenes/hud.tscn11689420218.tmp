@@ -194,3 +194,8 @@ offset_right = 257.0
 offset_bottom = 710.0
 theme_type_variation = &"hud_panel"
 alignment = 2
+
+[node name="Label" type="Label" parent="Control/Actions" unique_id=673750489]
+layout_mode = 2
+theme_type_variation = &"text_small"
+text = "Activate Area [E]"

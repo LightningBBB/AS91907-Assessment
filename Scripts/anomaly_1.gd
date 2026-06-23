@@ -6,30 +6,36 @@ extends CharacterBody2D
 
 var speed = 20
 
+
 func _ready() -> void:
 	$ColorRect.hide()
 	timer.timeout.connect(pick_new_target)
 	pick_new_target()
 
+
+# movement
 func _physics_process(_delta: float) -> void:
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
-		
+
 		if timer.is_stopped():
 			timer.start()
-		
+
 		move_and_slide()
 		return
-	
+
+
 	var next_position = agent.get_next_path_position()
 	var direction = (next_position - global_position).normalized()
-	
+
 	velocity = direction * speed
 	move_and_slide()
 
+
+# target picking
 func pick_new_target():
 	timer.stop()
-	
+
 	var random_point = NavigationServer2D.region_get_random_point(
 		region.get_rid(),
 		1,

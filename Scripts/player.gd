@@ -1,26 +1,30 @@
 extends CharacterBody2D
 
-
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 const SHIFT_SPEED = -100
 
-@onready var interaction_area = $Area2D 
+@onready var interaction_area = $Area2D
 @onready var hud = $Hud
-@onready var location_tilemap = $"../Location"
+@onready var location_tilemap = $"../NavigationRegion2D/Location"
+
+var current_eco_transmitter: Area2D = null
 
 var last_tile := Vector2i(-1, -1)
+var near_eco_transmitter := "none"
+var interact_hold_time = 2.0
+var held_time = 0.0
 
 signal location_entered(location: String)
 
 
 func _ready() -> void:
 	randomize()
-	
 	queue_redraw()
 
 
-func _physics_process(_delta: float) -> void:
+# movement
+func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down").normalized()
 
 	if not Input.is_action_pressed("sneak"):
@@ -32,15 +36,33 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-	# damage handling
-	var touching_bodies = interaction_area.get_overlapping_bodies()
-	for body in touching_bodies:
-		if body.get_meta("creature") == "anomaly_1":
-			if Global.fuel > 0:
-				Global.fuel -= 1	
 
-	# Location Test
-	var tile: Vector2i = location_tilemap.local_to_map(location_tilemap.to_local(global_position))
+# anomaly interaction
+	var touching_bodies = interaction_area.get_overlapping_bodies()
+
+	for body in touching_bodies:
+		if body.has_meta("creature") and body.get_meta("creature") == "anomaly_1":
+			if Global.fuel > 0:
+				Global.fuel -= 1
+
+
+# eco transmitter interaction
+	if Input.is_action_pressed("interact") and near_eco_transmitter != "none":
+		held_time += delta
+
+		if held_time >= interact_hold_time:
+			held_time = 0.0
+
+			if current_eco_transmitter:
+				current_eco_transmitter.get_parent().status = true
+	else:
+		held_time = 0.0
+
+
+# tile region detection
+	var tile: Vector2i = location_tilemap.local_to_map(
+		location_tilemap.to_local(global_position)
+	)
 
 	if tile == last_tile:
 		return
@@ -51,8 +73,24 @@ func _physics_process(_delta: float) -> void:
 	if data == null:
 		return
 
-	var location: String = data.get_custom_data("location")
+	var location: String = data.get_custom_data("region")
 	if location == "":
 		return
 
 	location_entered.emit(location)
+
+
+# area enter
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_meta("type") == "eco_transmitter":
+		current_eco_transmitter = area
+		near_eco_transmitter = str(area.get_parent().get_meta("region"))
+
+
+# area exit
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.get_meta("type") == "eco_transmitter":
+		if current_eco_transmitter == area:
+			current_eco_transmitter = null
+
+		near_eco_transmitter = "none"

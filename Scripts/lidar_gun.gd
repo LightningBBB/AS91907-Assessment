@@ -15,10 +15,13 @@ var cooldown_timer = 0.0
 var scanning = false
 var rays = []
 
+
 func _ready() -> void:
 	randomize()
 	_build_rays()
 
+
+# ray setup
 func _build_rays() -> void:
 	for child in ray_container.get_children():
 		child.queue_free()
@@ -39,15 +42,20 @@ func _build_rays() -> void:
 		ray_container.add_child(ray)
 		rays.append(ray)
 
+
+# aim + cooldown
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	cooldown_timer -= delta
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scan") and cooldown_timer <= 0 and not scanning:
 		cooldown_timer = scan_cooldown
 		_scan()
 
+
+# scan execution
 func _scan() -> void:
 	scanning = true
 

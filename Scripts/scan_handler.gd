@@ -10,6 +10,7 @@ func handle_scan_hit(collider, collision_point: Vector2, scanned_node) -> void:
 		if tile_data:
 			var tile_type = str(tile_data.get_custom_data("type"))
 			scanned_node.add_point(collision_point, tile_type)
+
 		return
 
 	if collider.has_meta("type"):
