@@ -11,7 +11,7 @@ extends CanvasLayer
 
 var location_data = {
 	"A0": "STABLE / EMPTY",
-	"A1": "STABLE / LIFE",
+	"A1": "STABLE / INHABITED",
 	"B1": "MODERATE / INHABITED",
 	"B2": "HEAVY / INHABITED",
 	"C0": "UNSTABLE / EMPTY",
@@ -30,6 +30,7 @@ var location_display := "NOWHERE"
 
 
 func _ready() -> void:
+	show()
 	get_parent().location_entered.connect(_on_location_entered)
 
 	await get_tree().create_timer(3.0).timeout
@@ -59,7 +60,7 @@ func _on_location_entered(entered_location):
 		location_display = "TYPE [" + entered_location + "] REGION"
 		return
 
-	location_display = "TYPE [" + entered_location + "] REGION // " + state
+	location_display = "TYPE [" + entered_location + "] REGION // STABILITY: " + state
 
 
 # action UI control

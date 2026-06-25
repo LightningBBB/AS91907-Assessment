@@ -156,6 +156,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_t1xeu")
 value = 100.0
 show_percentage = false
 
+[node name="Inventory" type="Panel" parent="Control" unique_id=1706171440]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 461.0
+offset_right = 89.0
+offset_bottom = 711.0
+theme_type_variation = &"hud_panel"
+
 [node name="Location" type="Label" parent="Control" unique_id=1137401612]
 layout_mode = 1
 anchors_preset = 5

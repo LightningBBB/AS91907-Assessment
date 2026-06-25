@@ -1,34 +1,33 @@
 extends Node
 
 @export var anomaly_1: PackedScene
-@export var anomaly_1_spawns = 3
 @export var anomaly_2: PackedScene
-@export var anomaly_2_spawns = 0
 @export var anomaly_3: PackedScene
-@export var anomaly_3_spawns = 0
 
 @onready var tilemap = $"../NavigationRegion2D/Location"
 @onready var enemies = $"../Enemies"
 
-var spawn_tiles := []
+var spawn_tiles := {}
 
 var spawn_rules = {
-	"A0": [],
-	"A1": ["anomaly_1"],
-	"B1": ["anomaly_1", "anomaly_2"],
-	"B2": ["anomaly_2"],
-	"C0": ["anomaly_1", "anomaly_2", "anomaly_3"],
-	"D0": ["anomaly_3"],
-	"GΩ": ["anomaly_1", "anomaly_2", "anomaly_3"]
+	"A0": {"allowed": [], "ratio": 0.0},
+	"A1": {"allowed": [], "ratio": 0.0},
+	"B1": {"allowed": ["anomaly_1"], "ratio": 0.0017},
+	"B2": {"allowed": ["anomaly_1", "anomaly_2"], "ratio": 0.0034},
+	"C0": {"allowed": ["anomaly_2"], "ratio": 0.0025},
+	"D0": {"allowed": ["anomaly_3"], "ratio": 0.0068},
+	"GΩ": {"allowed": ["anomaly_1", "anomaly_2", "anomaly_3"], "ratio": 0.01}
 }
+
+var region_quotas = {}
 
 
 func _ready() -> void:
 	get_spawn_tiles()
+	calculate_quotas()
 	spawn()
 
 
-# gather valid spawn locations
 func get_spawn_tiles() -> void:
 	for cell in tilemap.get_used_cells():
 		var tile_data = tilemap.get_cell_tile_data(cell)
@@ -43,61 +42,61 @@ func get_spawn_tiles() -> void:
 			continue
 
 		var pos = tilemap.map_to_local(cell)
-		pos += Vector2(tilemap.tile_set.tile_size) / 2.0
+		pos += Vector2(tilemap.tile_set.tile_size) * tilemap.scale / 2.0
 
-		spawn_tiles.append({
-			"pos": tilemap.to_global(pos),
-			"region": region
-		})
+		if not spawn_tiles.has(region):
+			spawn_tiles[region] = []
+
+		spawn_tiles[region].append(tilemap.to_global(pos))
 
 
-# spawn anomalies
+func calculate_quotas() -> void:
+	for region in spawn_tiles:
+		var count = spawn_tiles[region].size()
+		var rule = spawn_rules[region]
+		if rule["allowed"].is_empty():
+			continue
+		region_quotas[region] = int(count * rule["ratio"])
+
+
 func spawn() -> void:
-	var all_tiles = spawn_tiles.duplicate()
-	all_tiles.shuffle()
+	var total_spawns = 0
+	for q in region_quotas.values():
+		total_spawns += q
 
-	var total_spawns = anomaly_1_spawns + anomaly_2_spawns + anomaly_3_spawns
 	var spawned = 0
 
-	for tile in all_tiles:
-		if spawned >= total_spawns:
-			break
-
-		var region = tile["region"]
-		var pos = tile["pos"]
-
-		var allowed = spawn_rules.get(region, [])
-		if allowed.is_empty():
+	for region in spawn_tiles:
+		if not region_quotas.has(region):
 			continue
 
-		var type = allowed.pick_random()
-
-		var scene: PackedScene = null
-
-		match type:
-			"anomaly_1":
-				if anomaly_1_spawns <= 0:
-					continue
-				scene = anomaly_1
-				anomaly_1_spawns -= 1
-
-			"anomaly_2":
-				if anomaly_2_spawns <= 0:
-					continue
-				scene = anomaly_2
-				anomaly_2_spawns -= 1
-
-			"anomaly_3":
-				if anomaly_3_spawns <= 0:
-					continue
-				scene = anomaly_3
-				anomaly_3_spawns -= 1
-
-		if scene == null:
+		var quota = region_quotas[region]
+		if quota <= 0:
 			continue
 
-		var enemy = scene.instantiate()
-		enemy.global_position = pos
-		enemies.add_child(enemy)
+		var allowed = spawn_rules[region]["allowed"]
+		var tiles = spawn_tiles[region].duplicate()
+		tiles.shuffle()
 
-		spawned += 1
+		for pos in tiles:
+			if quota <= 0:
+				break
+
+			var type = allowed.pick_random()
+			var scene: PackedScene = null
+			match type:
+				"anomaly_1": scene = anomaly_1
+				"anomaly_2": scene = anomaly_2
+				"anomaly_3": scene = anomaly_3
+
+			if scene == null:
+				continue
+
+			var enemy = scene.instantiate()
+			enemy.global_position = pos
+			enemies.add_child(enemy)
+
+			quota -= 1
+			spawned += 1
+
+		region_quotas[region] = quota
