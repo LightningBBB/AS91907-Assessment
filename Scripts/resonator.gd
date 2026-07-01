@@ -1,13 +1,13 @@
 extends Node2D
 
-@onready var ray_container = $Rays
-@onready var scanned = get_tree().current_scene.get_node("Scanned")
+@onready var ray_container: Node2D = $Rays
+@onready var scanned: Node = get_tree().current_scene.get_node("Scanned")
 @onready var scan_handler_local = scan_handler.new()
-@onready var beep = $beep
+@onready var beep: AudioStreamPlayer = $beep
 
 var ray_count = 11
 var ray_length = 525.0
-var ray_origin = Vector2(0, 0)
+var ray_origin = Vector2.ZERO
 var cone_angle = 30.0
 var rays_per_scan = 40
 var scan_cooldown = 4.0
@@ -21,7 +21,7 @@ func _ready() -> void:
 	_build_rays()
 
 
-# ray setup
+# Ray setup
 func _build_rays() -> void:
 	for child in ray_container.get_children():
 		child.queue_free()
@@ -43,7 +43,7 @@ func _build_rays() -> void:
 		rays.append(ray)
 
 
-# aim + cooldown
+# Aim + cooldown
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	cooldown_timer -= delta
@@ -55,7 +55,7 @@ func _input(event: InputEvent) -> void:
 		_scan()
 
 
-# scan execution
+# Scan execution
 func _scan() -> void:
 	scanning = true
 

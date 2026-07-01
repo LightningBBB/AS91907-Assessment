@@ -5,7 +5,7 @@ extends Node2D
 @export var source_id: int = 0
 @export var wall_atlas_coord := Vector2i(0, 0)
 @export var floor_atlas_coord := Vector2i(1, 0)
-@export var use_floor_tile: bool = false  # false = floors are just empty cells
+@export var use_floor_tile: bool = false
 
 @export var width: int = 512
 @export var height: int = 512

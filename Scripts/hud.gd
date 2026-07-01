@@ -6,8 +6,8 @@ extends CanvasLayer
 @onready var death_label = $Control/Death
 @onready var location_label = $Control/Location
 @onready var actions = $Control/Actions
-
 @onready var player = get_parent()
+@onready var scanned: Node = get_tree().current_scene.get_node("Scanned")
 
 var location_data = {
 	"A0": "STABLE / EMPTY",
@@ -22,7 +22,7 @@ var location_data = {
 var action_labels := {
 	"scan": "SCAN [LMB]",
 	"interact": "INTERACT [E]",
-	"activate_eco_transmitter": "ACTIVATE ECO TRANSMITTER [E]"
+	"activate_feeder_node": "ACTIVATE FEEDER NODE [E]"
 }
 
 var active_actions := []
@@ -31,13 +31,14 @@ var location_display := "NOWHERE"
 
 func _ready() -> void:
 	show()
+
 	get_parent().location_entered.connect(_on_location_entered)
 
 	await get_tree().create_timer(3.0).timeout
 	objective_label.hide()
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	fuel_bar.value = Global.fuel
 	fuel_bonus_bar.value = Global.fuelbonus
 
@@ -46,24 +47,29 @@ func _process(_delta):
 
 	location_label.text = location_display
 
-	if player and player.near_eco_transmitter != "none":
-		show_action("activate_eco_transmitter")
+	if player and player.near_feeder_node != "none":
+		show_action("activate_feeder_node")
 	else:
-		hide_action("activate_eco_transmitter")
+		hide_action("activate_feeder_node")
 
 
-# location updates
-func _on_location_entered(entered_location):
-	var state = location_data.get(entered_location)
+# Location updates
+func _on_location_entered(entered_location: String, cell: Vector2i) -> void:
+	var activated_region: String = scanned.get_region_at(cell)
 
-	if state == null:
-		location_display = "TYPE [" + entered_location + "] REGION"
+	if activated_region == "":
+		location_display = "NOWHERE"
 		return
 
-	location_display = "TYPE [" + entered_location + "] REGION // STABILITY: " + state
+	var state = location_data.get(activated_region)
+	if state == null:
+		location_display = "TYPE [" + activated_region + "] REGION"
+		return
+
+	location_display = "TYPE [" + activated_region + "] REGION // STABILITY: " + state
 
 
-# action UI control
+# Action UI control
 func show_action(key: String) -> void:
 	if not action_labels.has(key):
 		return

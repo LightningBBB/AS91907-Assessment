@@ -10,62 +10,68 @@ var scanpoints = {
 	"lore_book": [],
 	"credit": [],
 	"structure": [],
-	"eco_transmitter": [],
-
+	"feeder_node": [],
 	"A0": [],
 	"A1": [],
 	"B1": [],
 	"B2": [],
 	"C0": [],
 	"D0": [],
+	"D1": [],
 	"GΩ": []
 }
 
-var colors = {
+const COLORS = {
 	"wall": Color("#E6E6E6"),
-
 	"anomaly_1": Color("#E07A7A"),
 	"anomaly_2": Color("#F09A5C"),
 	"anomaly_3": Color("#E05C7A"),
 	"anomaly_4": Color("#C84A4A"),
 	"anomaly_5": Color("#9A2F2F"),
-
 	"lore_book": Color("#7FD6B0"),
 	"credit": Color("#D6C27A"),
 	"structure": Color("#7FA6D6"),
-	"eco_transmitter": Color("#B08AD6"),
-
+	"feeder_node": Color("#B08AD6"),
 	"A0": Color("#7FC9A0"),
 	"A1": Color("#57A883"),
 	"B1": Color("#C2B06F"),
 	"B2": Color("#A08A55"),
 	"C0": Color("#6F97C9"),
 	"D0": Color("#C96F6F"),
+	"D1": Color("#C8573A"),
 	"GΩ": Color("#9A74E6")
 }
 
 var dot_sizes = {
 	"wall": 1.0,
-
 	"anomaly_1": 1.0,
 	"anomaly_2": 1.0,
 	"anomaly_3": 1.0,
 	"anomaly_4": 1.0,
 	"anomaly_5": 1.0,
-
 	"lore_book": 1.0,
 	"credit": 1.0,
 	"structure": 1.0,
-	"eco_transmitter": 1.0,
-
+	"feeder_node": 1.0,
 	"A0": 0.25,
 	"A1": 0.25,
 	"B1": 0.25,
 	"B2": 0.25,
 	"C0": 0.25,
 	"D0": 0.25,
+	"D1": 0.25,
 	"GΩ": 0.25
 }
+
+var activated_cells: Dictionary = {}  # Vector2i -> String (region code)
+
+
+func mark_cell_activated(cell: Vector2i, region: String) -> void:
+	activated_cells[cell] = region
+
+
+func get_region_at(cell: Vector2i) -> String:
+	return activated_cells.get(cell, "")
 
 
 func add_point(collision_point: Vector2, collider) -> void:
@@ -99,5 +105,5 @@ func _draw() -> void:
 					data["pos"] - Vector2(size, size) * 0.5,
 					Vector2(size, size)
 				),
-				colors.get(key, Color.WHITE)
+				COLORS.get(key, Color.WHITE)
 			)

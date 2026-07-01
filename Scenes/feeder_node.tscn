@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cs47qu7xgfjei"]
 
-[ext_resource type="Script" uid="uid://c3iu6kahca4ip" path="res://Scripts/eco_transmitter.gd" id="1_60lih"]
+[ext_resource type="Script" uid="uid://c3iu6kahca4ip" path="res://Scripts/feeder_node.gd" id="1_60lih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60lih"]
 radius = 88.0
 
-[node name="EcoTransmitter" type="StaticBody2D" unique_id=1159630745 groups=["structure"]]
+[node name="FeederNode" type="StaticBody2D" unique_id=1159630745 groups=["structure"]]
 script = ExtResource("1_60lih")
-metadata/type = "eco_transmitter"
+metadata/type = "feeder_node"
 metadata/region = ""
 
 [node name="Rays" type="Node2D" parent="." unique_id=1738451631]
@@ -17,7 +17,7 @@ polygon = PackedVector2Array(-40, 16, -40, -16, -40, -16, -16, -40, 16, -40, 40,
 
 [node name="Area2D" type="Area2D" parent="." unique_id=243692683]
 collision_layer = 4
-metadata/type = "eco_transmitter"
+metadata/type = "feeder_node"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=707195763]
 shape = SubResource("CircleShape2D_60lih")

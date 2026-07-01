@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt2y436d3fyg7"]
 
 [ext_resource type="Script" uid="uid://7q3uh8rveinw" path="res://Scripts/player.gd" id="1_epa76"]
-[ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/lidar_gun.gd" id="1_xi363"]
+[ext_resource type="Script" uid="uid://bp63t50jubfkl" path="res://Scripts/resonator.gd" id="1_xi363"]
 [ext_resource type="AudioStream" uid="uid://c3nbr604uckg0" path="res://Assets/Sound/beep.wav" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dk4rfbxecxjtk" path="res://Scenes/hud.tscn" id="4_vgqql"]
 
@@ -33,10 +33,10 @@ offset_bottom = 20.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Lidar Gun" type="Node2D" parent="." unique_id=971271743]
+[node name="Resonator" type="Node2D" parent="." unique_id=971271743]
 script = ExtResource("1_xi363")
 
-[node name="ColorRect" type="ColorRect" parent="Lidar Gun" unique_id=1816479817]
+[node name="ColorRect" type="ColorRect" parent="Resonator" unique_id=1816479817]
 visible = false
 offset_top = -8.0
 offset_right = 30.0
@@ -44,10 +44,10 @@ offset_bottom = 8.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Rays" type="Node2D" parent="Lidar Gun" unique_id=623796355]
+[node name="Rays" type="Node2D" parent="Resonator" unique_id=623796355]
 position = Vector2(13, 0)
 
-[node name="beep" type="AudioStreamPlayer" parent="Lidar Gun" unique_id=457728639]
+[node name="beep" type="AudioStreamPlayer" parent="Resonator" unique_id=457728639]
 stream = ExtResource("3_6t5aa")
 volume_db = -11.45
 

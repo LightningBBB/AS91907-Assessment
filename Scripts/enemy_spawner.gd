@@ -54,18 +54,14 @@ func calculate_quotas() -> void:
 	for region in spawn_tiles:
 		var count = spawn_tiles[region].size()
 		var rule = spawn_rules[region]
+
 		if rule["allowed"].is_empty():
 			continue
+
 		region_quotas[region] = int(count * rule["ratio"])
 
 
 func spawn() -> void:
-	var total_spawns = 0
-	for q in region_quotas.values():
-		total_spawns += q
-
-	var spawned = 0
-
 	for region in spawn_tiles:
 		if not region_quotas.has(region):
 			continue
@@ -84,10 +80,14 @@ func spawn() -> void:
 
 			var type = allowed.pick_random()
 			var scene: PackedScene = null
+
 			match type:
-				"anomaly_1": scene = anomaly_1
-				"anomaly_2": scene = anomaly_2
-				"anomaly_3": scene = anomaly_3
+				"anomaly_1":
+					scene = anomaly_1
+				"anomaly_2":
+					scene = anomaly_2
+				"anomaly_3":
+					scene = anomaly_3
 
 			if scene == null:
 				continue
@@ -97,6 +97,5 @@ func spawn() -> void:
 			enemies.add_child(enemy)
 
 			quota -= 1
-			spawned += 1
 
 		region_quotas[region] = quota
